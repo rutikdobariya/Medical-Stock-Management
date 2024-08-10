@@ -1,0 +1,510 @@
+<?php
+
+
+session_start();
+if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
+  include "connection.php";
+?>
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Pharmacy Management System</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/customStyle.css">
+    <style>
+      .result {
+        color: red;
+      }
+
+      td {
+        text-align: center;
+      }
+    </style>
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+      <!-- Sidebar -->
+      <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+          <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-laugh-wink"></i>
+          </div>
+          <div class="sidebar-brand-text mx-3">Pharmacy Management</div>
+        </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
+          <a class="nav-link" href="dashboard.php">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <!-- <div class="sidebar-heading">
+        Interface
+      </div> -->
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Inventory</span>
+          </a>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <!-- <h6 class="collapse-header">Custom Components:</h6> -->
+              <a class="collapse-item" href="inventory_add.php">Add New Medicine</a>
+              <a class="collapse-item" href="inventory_view.php">Manage Inventory</a>
+            </div>
+          </div>
+        </li>
+
+        <!-- Nav Item - Utilities Collapse Menu -->
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSuppliers" aria-expanded="true" aria-controls="collapseSuppliers">
+            <i class="fas fa-fw fa-wrench"></i>
+            <span>Suppliers</span>
+          </a>
+          <div id="collapseSuppliers" class="collapse" aria-labelledby="headingSuppliers" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <!-- <h6 class="collapse-header">Custom Utilities:</h6> -->
+              <a class="collapse-item" href="supplier_add.php">Add New Supplier</a>
+              <a class="collapse-item" href="supplier_view.php">Manage Suppliers</a>
+            </div>
+          </div>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseStock" aria-expanded="true" aria-controls="collapseStock">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Stock Purchase</span>
+          </a>
+          <div id="collapseStock" class="collapse" aria-labelledby="headingStock" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <!-- <h6 class="collapse-header">Login Screens:</h6> -->
+              <a class="collapse-item" href="purchase.php">Add New Purchase</a>
+              <div class="collapse-divider"></div>
+            </div>
+          </div>
+        </li>
+
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCustomer" aria-expanded="true" aria-controls="collapseCustomer">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Customer</span>
+          </a>
+          <div id="collapseCustomer" class="collapse" aria-labelledby="headingCustomer" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <!-- <h6 class="collapse-header">Login Screens:</h6> -->
+              <!-- <a class="collapse-item" href="customer_add.php">Add New Customer</a> -->
+              <a class="collapse-item" href="customer_view.php">Manage Customer</a>
+              <div class="collapse-divider"></div>
+            </div>
+          </div>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+          <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+
+      </ul>
+      <!-- End of Sidebar -->
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+          <!-- Topbar -->
+          <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+            <!-- Sidebar Toggle (Topbar) -->
+            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+              <i class="fa fa-bars"></i>
+            </button>
+
+
+            <!-- Topbar Navbar -->
+            <ul class="navbar-nav ml-auto">
+
+              <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+
+              <div class="topbar-divider d-none d-sm-block"></div>
+
+              <!-- Nav Item - User Information -->
+              <li class="nav-item dropdown no-arrow">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['name'];  ?></span>
+                  <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                </a>
+                <!-- Dropdown - User Information -->
+                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                  <a class="dropdown-item" href="#">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Profile
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Logout
+                  </a>
+                </div>
+              </li>
+
+            </ul>
+
+          </nav>
+          <!-- End of Topbar -->
+
+          <!-- Begin Page Content -->
+          <div class="container-fluid">
+
+            <!-- Page Heading -->
+            <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
+              <h1 class="h3 mb-0 text-gray-800">Accoring to Current Records</h1>
+            </div> -->
+
+            <!-- Content Row -->
+            <div class="row">
+
+              <section class="mt-3">
+                <div class="container-fluid">
+                  <h4 class="text-center" style="color:green">Accoring to Current Records </h4>
+                  <!-- <h6 class="text-center"> Shine Metro Mkadi Naka (New - Delhi)</h6> -->
+                  <div class="row">
+                    <div class="col-md-5  mt-4 ">
+                      <table class="table" style="background-color:#f5f5f5;">
+                        <thead>
+                          <tr>
+                            <!-- <th>No.</th> -->
+                            <th>Medicines</th>
+                            <th style="width: 51%">Qty</th>
+                            <th>Price</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <!-- <td scope="row">1</td> -->
+                            <td style="width:60%">
+                              <select name="medicine" id="medicine" class="form-control" style="width: fit-content;">
+                                <option value="">Select Medicine</option>
+                                <?php
+                                $sql = "SELECT * FROM medicine";
+                                $query = mysqli_query($conn, $sql);
+                                while ($row = mysqli_fetch_assoc($query)) {
+                                ?>
+                                  <option id="<?php echo $row['id']; ?>" value="<?php echo $row['medicine_name']; ?>" class="medicine custom-select">
+                                    <?php echo $row['medicine_name']; ?>
+                                  </option>
+                                <?php  } ?>
+                              </select>
+                            </td>
+                            <td style="width:1%">
+                              <input type="number" id="qty" style="width: 100px" min="0" value="0" class="form-control">
+                            </td>
+                            <td>
+                              <p id="price"></p>
+                            </td>
+                            <td><button id="add" class="btn btn-primary">Add</button></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div role="alert" id="errorMsg" class="mt-5">
+                        <!-- Error msg  -->
+                      </div>
+                    </div>
+                    <div class="col-md-7  mt-4" style="background-color:#f5f5f5;">
+                      <div class="p-4">
+                        <div class="text-center">
+                          <h4>Bill</h4>
+                        </div>
+                        <!-- <span class="mt-4"> Time : </span><span class="mt-4" id="time"></span> -->
+                        <div class="row">
+                          <div class="col-xs-6 col-sm-6 col-md-6 ">
+                            <!-- <span id="day"></span> : <span id="year"></span>
+                          </div>
+                          <div class="col-xs-6 col-sm-6 col-md-6 text-right">
+                            <p>Order No:</p>
+                          </div> -->
+                          </div>
+                          <div class="row">
+                            </span>
+                            <table id="receipt_bill" class="table">
+                              <thead>
+                                <tr>
+                                  <th> No.</th>
+                                  <th>Medicine Name</th>
+                                  <th>Quantity</th>
+                                  <th class="text-center">Price</th>
+                                  <th class="text-center">Total</th>
+                                </tr>
+                              </thead>
+                              <tbody id="new">
+
+                              </tbody>
+                              <tr>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td class="text-right text-dark">
+                                  <h5><strong>Sub Total: ₹ </strong></h5>
+                                  <p><strong>Tax (5%) : ₹ </strong></p>
+                                </td>
+                                <td class="text-center text-dark">
+                                  <h5> <strong><span id="subTotal"></strong></h5>
+                                  <h5> <strong><span id="taxAmount"></strong></h5>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td class="text-right text-dark">
+                                  <h5><strong>Gross Total: ₹ </strong></h5>
+                                </td>
+                                <td class="text-center text-danger">
+                                  <h5 id="totalPayment"><strong> </strong></h5>
+
+                                </td>
+
+                              </tr>
+                              <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                  <form action="customer_add.php" method="post">
+                                    <input type="hidden" name="tamount" id="tamount">
+                                    <input type="hidden" name="count" id="count">
+                                    <input type="hidden" name="med" id="med">
+                                    <button id="add" class="btn btn-primary" data-toggle="modal" name="submit" data-target="#billOut"><a style="color: #f5f5f5;">Generate Bill</a></button>
+                                </td>
+                                </form>
+                              </tr>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              </section>
+
+            </div>
+          </div>
+        </div>
+
+
+        <a class="scroll-to-top rounded" href="#page-top">
+          <i class="fas fa-angle-up"></i>
+        </a>
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+              <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="logout.php">Logout</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin-2.min.js"></script>
+
+        <!-- Page level plugins -->
+        <script src="vendor/chart.js/Chart.min.js"></script>
+
+        <!-- Page level custom scripts -->
+        <script src="js/demo/chart-area-demo.js"></script>
+        <script src="js/demo/chart-pie-demo.js"></script>
+
+  </body>
+
+  </html>
+  <script>
+    $(document).ready(function() {
+      $('#medicine').change(function() {
+        var id = $(this).find(':selected')[0].id;
+        $.ajax({
+          method: 'POST',
+          url: 'fetch_medicine.php',
+          data: {
+            id: id
+          },
+          dataType: 'json',
+          success: function(data) {
+            $('#price').text(data.medicine_price);
+
+            // $('#qty').text(data.product_qty);
+            $('#qty').attr("max", data.medicine_quantity);
+
+          }
+        });
+      });
+
+      //add to cart 
+      var count = 1;
+      $('#add').on('click', function() {
+
+        var name = $('#medicine').val();
+        var qty = Number($('#qty').val());
+        var price = $('#price').text();
+        var maxQuantity = Number($('#qty').attr("max"));
+
+        if (qty == 0) {
+          var erroMsg = '<span class="alert alert-danger ml-5">Minimum Quantity should be 1 or More than 1</span>';
+          $('#errorMsg').html(erroMsg).fadeOut(9000);
+        } else if (qty >= maxQuantity) {
+
+          var erroMsg = '<span class="alert alert-danger ml-5">Availbale stock is ' + maxQuantity + '</span>';
+          $('#errorMsg').html(erroMsg).fadeOut(9000);
+        } else {
+          billFunction(); // Below Function passing here 
+        }
+
+        function billFunction() {
+          var total = 0;
+
+          $("#receipt_bill").each(function() {
+            var total = price * qty;
+            var subTotal = 0;
+            subTotal += parseInt(total);
+
+            var table = '<tr><td>' + count + '</td><td>' + name + '</td><td>' + qty + '</td><td>' + price + '</td><td><strong><input type="hidden" id="total" value="' + total + '">' + total + '</strong></td></tr>';
+            $('#new').append(table)
+            $('#count').val(count);
+
+            // Add medicine into array
+            var medicineArray = {};
+
+            medicineArray[name] = qty;
+            // $('#med').val(JSON.stringify(medicineArray));
+
+            $('#med').val($('#med').val() + JSON.stringify(medicineArray) + ',');
+            // var val = $('#med').val();
+            // val = JSON.parse(value);
+            // console.log(val);
+
+            // Code for Sub Total of Vegitables 
+            var total = 0;
+            $('tbody tr td:last-child').each(function() {
+              var value = parseInt($('#total', this).val());
+              if (!isNaN(value)) {
+                total += value;
+              }
+            });
+            $('#subTotal').text(total);
+
+            // Code for calculate tax of Subtoal 5% Tax Applied
+            var Tax = (total * 5) / 100;
+            $('#taxAmount').text(Tax.toFixed(2));
+
+            // Code for Total Payment Amount
+
+            var Subtotal = $('#subTotal').text();
+            var taxAmount = $('#taxAmount').text();
+
+            var totalPayment = parseFloat(Subtotal) + parseFloat(taxAmount);
+            $('#totalPayment').text(totalPayment.toFixed(2)); // Showing using ID
+
+            var t = $('#totalPayment').text();
+            console.log(t);
+            $('#tamount').val(t);
+          });
+          count++;
+        }
+      });
+      // Code for year 
+
+      var currentdate = new Date();
+      var datetime = currentdate.getDate() + "/" +
+        (currentdate.getMonth() + 1) + "/" +
+        currentdate.getFullYear();
+      $('#year').text(datetime);
+
+      // Code for extract Weekday     
+      function myFunction() {
+        var d = new Date();
+        var weekday = new Array(7);
+        weekday[0] = "Sunday";
+        weekday[1] = "Monday";
+        weekday[2] = "Tuesday";
+        weekday[3] = "Wednesday";
+        weekday[4] = "Thursday";
+        weekday[5] = "Friday";
+        weekday[6] = "Saturday";
+
+        var day = weekday[d.getDay()];
+        return day;
+      }
+      var day = myFunction();
+      $('#day').text(day);
+    });
+  </script>
+
+  <!-- // Code for TIME -->
+
+<?php
+} else {
+  header("Location: index.php");
+  exit();
+}
+?>

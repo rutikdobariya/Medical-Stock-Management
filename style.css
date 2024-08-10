@@ -1,0 +1,142 @@
+.text-heading {
+  color: #000 !important;
+  margin-bottom: 1.5rem !important;
+  font-size: 2.2rem;
+  text-align: center !important;
+  text-decoration: underline;
+}
+
+.text-lable {
+  color: #000 !important;
+  margin-bottom: 1.5rem !important;
+  font-size: 1.1rem;
+  text-align: center !important;
+}
+
+.text-select {
+  color: #000 !important;
+  margin-bottom: 0.5rem !important;
+  font-size: 1.2rem;
+  margin-left: 8px;
+  text-align: center !important;
+}
+
+body {
+  background-color: #4e73df;
+}
+
+.form {
+  font-family: Nunito, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 16px;
+  margin: 0 auto;
+  border-radius: 8px;
+  width: fit-content;
+  background-color: #fff;
+  padding: 1rem 5rem;
+}
+
+input {
+  writing-mode: horizontal-tb !important;
+  text-rendering: auto;
+  color: fieldtext;
+  letter-spacing: normal;
+  word-spacing: normal;
+  line-height: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  appearance: auto;
+  -webkit-rtl-ordering: logical;
+  cursor: text;
+  background-color: field;
+  margin: 0em;
+  padding: 1px 2px;
+  border-width: 2px;
+  border-style: inset;
+  border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+  border-image: initial;
+}
+
+.form-element {
+  font-family: Nunito, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  text-decoration-color: #000;
+  border-radius: 10rem;
+  padding: 0.5rem 1rem;
+}
+
+.form-element-textarea {
+  font-family: Nunito, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1.2rem;
+  border-radius: 2rem;
+  padding: 0.5rem 1rem;
+}
+
+.btn {
+  font-family: Nunito, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 0.8rem;
+  border-radius: 10rem;
+  padding: 0.5rem 3rem;
+  color: #fff;
+  background-color: #2653d4;
+  border-color: #244ec9;
+  display: block;
+  text-align: center;
+  font-weight: 400;
+  font-size: 1rem;
+  width: 100%;
+  border-color: #4e73df;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.submit {
+  margin-top: 15px;
+}
+
+.btn:hover {
+  color: #fff;
+  background-color: #2e59d9;
+  border-color: #2653d4;
+  text-decoration: none;
+}
+
+.error {
+  background: #f2dede;
+  color: #a94442;
+  padding: 10px;
+  width: 95%;
+  border-radius: 5px;
+}
+
+.form .pass-link {
+  color: #4158d0;
+  margin: 5px 0px 0px 10px;
+}
+
+.form .signup-link {
+  text-align: center;
+  margin-top: 20px;
+  color: #262626;
+}
+
+.form .pass-link a,
+.form .signup-link a {
+  color: #4158d0;
+  text-decoration: none;
+}
+
+.form .pass-link a:hover,
+.form .signup-link a:hover {
+  text-decoration: underline;
+}
